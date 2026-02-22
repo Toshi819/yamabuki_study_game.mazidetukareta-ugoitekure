@@ -24,7 +24,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const APP_VERSION = "1.0.6";
+const APP_VERSION = "1.0.8";
 
 console.log("script loaded");
 const app = document.getElementById("app");
@@ -834,11 +834,14 @@ function showRanking() {
 
   app.innerHTML = `
     <h2>ランキング</h2>
-    <div id="rankingList">読み込み中...</div>
+    <div id="rankingTop"></div>
+    <hr>
+    <div id="rankingAround"></div>
     <button id="backBtn" class="back-btn">戻る</button>
   `;
 
-  const rankingDiv = document.getElementById("rankingList");
+  const topDiv = document.getElementById("rankingTop");
+  const aroundDiv = document.getElementById("rankingAround");
   const currentId = localStorage.getItem("currentUser");
 
   if (typeof unsubscribeRanking === "function") {
@@ -853,7 +856,6 @@ function showRanking() {
 
       snapshot.forEach(docSnap => {
         const data = docSnap.data();
-
         ranking.push({
           id: docSnap.id,
           name: data.name,
@@ -861,30 +863,37 @@ function showRanking() {
         });
       });
 
-      // 🔥 数値確定ソート
+      // 🔥 数値ソート保証
       ranking.sort((a, b) => b.totalScore - a.totalScore);
 
-      let html = "";
+      const myIndex = ranking.findIndex(u => u.id === currentId);
+      const myRank = myIndex + 1;
 
-      ranking.forEach((user, index) => {
+      // =========================
+      // 🏆 上位10位
+      // =========================
+      let topHtml = "<h3>🏆 全体TOP10</h3>";
 
-        let medal = "";
-        if (index === 0) medal = "🥇";
-        else if (index === 1) medal = "🥈";
-        else if (index === 2) medal = "🥉";
-
-        const isMe = user.id === currentId;
-
-        html += `
-          <div class="ranking-item ${isMe ? "ranking-me" : ""}">
-            ${medal} ${index + 1}位
-            ${user.name}
-            <strong>${user.totalScore}</strong>
-          </div>
-        `;
+      ranking.slice(0, 10).forEach((user, index) => {
+        topHtml += createRankingItem(user, index, currentId);
       });
 
-      rankingDiv.innerHTML = html;
+      topDiv.innerHTML = topHtml;
+
+      // =========================
+      // 👤 自分付近
+      // =========================
+      let aroundHtml = `<h3>👤 あなたの順位: ${myRank}位</h3>`;
+
+      const start = Math.max(myIndex - 2, 0);
+      const end = Math.min(myIndex + 3, ranking.length);
+
+      ranking.slice(start, end).forEach((user, index) => {
+        const realIndex = start + index;
+        aroundHtml += createRankingItem(user, realIndex, currentId);
+      });
+
+      aroundDiv.innerHTML = aroundHtml;
     }
   );
 
@@ -897,6 +906,23 @@ function showRanking() {
     });
 }
 
+function createRankingItem(user, index, currentId) {
+
+  let medal = "";
+  if (index === 0) medal = "🥇";
+  else if (index === 1) medal = "🥈";
+  else if (index === 2) medal = "🥉";
+
+  const isMe = user.id === currentId;
+
+  return `
+    <div class="ranking-item ${isMe ? "ranking-me" : ""}">
+      ${medal} ${index + 1}位
+      ${user.name}
+      <strong>${user.totalScore}</strong>
+    </div>
+  `;
+}
 
 
 function logout() {
