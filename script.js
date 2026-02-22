@@ -24,7 +24,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const APP_VERSION = "1.0.8";
+const APP_VERSION = "1.1.8";
 
 console.log("script loaded");
 const app = document.getElementById("app");
@@ -351,7 +351,7 @@ async function register() {
   const id = "ID" + Math.floor(10000 + Math.random() * 90000);
 
   try {
-    // 🔥 Firestoreに保存
+    //  Firestoreに保存
     await setDoc(doc(db, "users", id), {
       id: id,
       name: name,
@@ -359,10 +359,10 @@ async function register() {
       scores: {}
     });
 
-    // 🔥 ログイン状態保存
+    //  ログイン状態保存
     localStorage.setItem("currentUser", id);
 
-    // 🔥 そのままホームへ
+    //  そのままホームへ
     showHome({
       id: id,
       name: name,
@@ -780,12 +780,12 @@ async function finishQuiz() {
   const scores = userData.scores || {};
   const previousBest = scores[key] || 0;
 
-  // 🔥 ベスト更新判定
+  //  ベスト更新判定
   if (score > previousBest) {
     scores[key] = score;
   }
 
-  // 🔥 合計ベスト更新
+  //  合計ベスト更新
    const totalScore = Object.values(scores)
     .reduce((sum, val) => sum + Number(val), 0);
 
@@ -863,7 +863,7 @@ function showRanking() {
         });
       });
 
-      // 🔥 数値ソート保証
+      
       ranking.sort((a, b) => b.totalScore - a.totalScore);
 
       const myIndex = ranking.findIndex(u => u.id === currentId);
