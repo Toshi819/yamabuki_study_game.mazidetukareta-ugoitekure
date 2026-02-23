@@ -24,7 +24,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const APP_VERSION = "1.1.9";
+const APP_VERSION = "1.1.11";
 
 console.log("script loaded");
 const app = document.getElementById("app");
@@ -281,6 +281,50 @@ const quizData = {
         {"q":"「proper use of chopsticks」の意味として正しいものはどれか。","c":["箸の誤った使い方","箸の正しい使い方","箸の歴史","箸の作り方"],"a":1,"e":"properは「適切な、正しい」という意味です。"},
         {"q":"「Look (  ) (…をちらっと見る)」に入る語はどれか。","c":["for","at","glance","in"],"a":2,"e":"glance at ～ で「～をちらっと見る」となります。"},
         {"q":"このレッスンの結論としてふさわしいものはどれか。","c":["Respecting diversity is key.","Uniforms are necessary.","Do not be different.","Culture is not important."],"a":0,"e":"「多様性を尊重すること」が最も重要であると結んでいます。"}
+      ],
+      "第3回":[
+        {"q":"「一般的に言って」という意味の慣用的な分詞構文はどれか。","c":["Strictly speaking","Generally speaking","Frankly speaking","Judging from"],"a":1,"e":"Generally speakingで「一般的に言って」となります。"},
+        {"q":"「～から判断すると」という意味の慣用的な分詞構文はどれか。","c":["Judging from","Judging by","Talking of","Both 0 and 1"],"a":3,"e":"Judging from または Judging by で「～から判断すると」という意味になります。"},
+        {"q":"「率直に言って」という意味の慣用的な分詞構文はどれか。","c":["Strictly speaking","Generally speaking","Frankly speaking","Judging from"],"a":2,"e":"Frankly speakingで「率直に言って」となります。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) from a distance, the rock looks like a human face.","c":["Seeing","Seen","Saw","To see"],"a":1,"e":"「見られると（見ると）」という受動の関係なので、過去分詞のSeenを使います。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) to the radio, I did my homework.","c":["Listen","Listening","Listened","To listen"],"a":1,"e":"「聞きながら」という能動の同時並行なので、ing形（現在分詞）を使います。"},
+        {"q":"完了形の分詞構文 (  )に入る適切な形を選びなさい。\n(  ) the movie before, I didn't want to see it again.","c":["Seeing","Seen","Having seen","Have seen"],"a":2,"e":"「以前に見たので（それ以前の出来事）」を表すため、完了形の Having seen を使います。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) not knowing what to say, she remained silent.","c":["Not","No","Don't","Never"],"a":0,"e":"分詞構文の否定は、分詞の直前に Not を置きます。"},
+        {"q":"次の文章を分詞構文に書き換えた時、正しいものはどれか。\n'As I felt tired, I went to bed early.'","c":["Feeling tired, I went to bed early.","Felt tired, I went to bed early.","Having felt tired, I went to bed early.","To feel tired, I went to bed early."],"a":0,"e":"接続詞Asと主語Iを消し、feltを現在分詞のFeelingにします。"},
+        {"q":"「厳密に言うと」を意味する表現はどれか。","c":["Strictly speaking","Broadly speaking","Roughly speaking","Frankly speaking"],"a":0,"e":"Strictly speaking で「厳密に言うと」です。"},
+        {"q":"「～と言えば」を意味する表現はどれか。","c":["Speaking for","Speaking of","Speaking at","Speaking by"],"a":1,"e":"Speaking of ～ で「～と言えば」という慣用表現です。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) my work, I went out for a walk.","c":["Finish","Finishing","Finished","Having finished"],"a":3,"e":"「仕事を終えたあとで」という時間差（完了）を表すため、Having finished が最適です。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) in easy English, this book is for children.","c":["Writing","Written","Wrote","To write"],"a":1,"e":"「簡単な英語で書かれているので」という受動の意味なので、過去分詞のWrittenを使います。"},
+        {"q":"分詞構文の意味として不適切なものはどれか。","c":["時（～する時）","理由（～なので）","目的（～するために）","付帯状況（～しながら）"],"a":2,"e":"分詞構文に「目的」の意味はありません。不定詞(to do)の役割です。"},
+        {"q":"「彼の表情から判断すると、彼は怒っているようだ」\n(  ) from his face, he seems angry.","c":["Judge","Judged","Judging","To judge"],"a":2,"e":"慣用表現の Judging from ～ です。"},
+        {"q":"(  )に入る適切な形を選びなさい。\n(  ) a bad cold, I stayed in bed.","c":["Having","Had","To have","Having had"],"a":0,"e":"「風邪をひいていたので」という理由を表す現在分詞のHavingです。"},
+        {"q":"「テレビを見ながら、彼は夕食を食べた」 (  )に入る形はどれか。\n(  ) TV, he ate dinner.","c":["Watch","Watched","Watching","Having watched"],"a":2,"e":"同時進行を表す ing形を使います。"},
+        {"q":"分詞構文の否定形 'Not knowing his address, I couldn't write to him.' を接続詞を使って書き換えると？","c":["Because I knew his address...","Because I didn't know his address...","After I knew his address...","If I don't know his address..."],"a":1,"e":"Not knowing... は「知らなかったので」という否定の理由を表します。"},
+        {"q":"「太陽が昇ったので、私たちは出発した」 独立分詞構文として正しいのはどれか。","c":["The sun rising, we started.","Rising the sun, we started.","The sun risen, we started.","Having risen the sun, we started."],"a":0,"e":"主語が異なる場合、分詞の前に主語を残します（独立分詞構文）。"},
+        {"q":"「もし天気が良ければ」という慣用句はどれか。","c":["Weather permitted","Weather permitting","Weather permits","Weather permittedly"],"a":1,"e":"Weather permitting で「天気が良ければ」という独立分詞構文の慣用句です。"},
+        {"q":"「率直に言って、君は間違っている」\n(  ), you are wrong.","c":["Frankly speaking","Honestly spoken","Speaking frankly","Both 0 and 2"],"a":3,"e":"Frankly speaking または Speaking frankly はどちらも使われます。"}
+      ],
+      "第4回":[
+        {"q":"「今の状況」について「～ならいいのになあ」と願う時の正しい形はどれか。","c":["I wish I am rich.","I wish I was rich.","I wish I were rich.","I wish I will be rich."],"a":2,"e":"現在の事実に反する願望は仮定法過去（were/過去形）を使います。"},
+        {"q":"「あの時～だったらよかったのになあ」と過去を後悔する時の形はどれか。","c":["I wish I had studied harder.","I wish I studied harder.","I wish I study harder.","I wish I would study harder."],"a":0,"e":"過去の事実に反する願望は仮定法過去完了（had + 過去分詞）を使います。"},
+        {"q":"「まるで彼は何でも知っているかのように話す」 (  )に入る語はどれか。\nHe talks as if he (  ) everything.","c":["knows","knew","had known","know"],"a":1,"e":"現在の事実に反する「まるで～であるかのように」は仮定法過去（knew）を使います。"},
+        {"q":"「まるで彼は以前そこにいたかのように話した」 (  )に入る語はどれか。\nHe talked as if he (  ) there before.","c":["was","were","had been","has been"],"a":2,"e":"話した時点よりも「前のこと」を仮定する場合は仮定法過去完了（had been）を使います。"},
+        {"q":"「もし水がなければ、私たちは生きられないだろう」 (  )に入る適切な表現はどれか。\n(  ) water, we couldn't live.","c":["If it were not for","If it had not been for","If it is not for","If there is no"],"a":0,"e":"「もし（今）～がなければ」は If it were not for ～ です。"},
+        {"q":"「もしあの時あなたの助けがなかったら、失敗していただろう」 (  )に入る語はどれか。\nIf it (  ) for your help, I would have failed.","c":["were not","had not been","was not","not been"],"a":1,"e":"「もし（あの時）～がなかったら」は If it had not been for ～ です。"},
+        {"q":"「あぁ、宝くじが当たればいいのになぁ！」 (  )に入る表現はどれか。\n(  ) I won the lottery!","c":["Only if","If only","As if","Wish if"],"a":1,"e":"If only + 仮定法で「～でありさえすればいいのに」という強い願望を表します。"},
+        {"q":"「もう寝る時間ですよ」 (  )に入る適切な形を選びなさい。\nIt's time you (  ) to bed.","c":["go","went","have gone","are going"],"a":1,"e":"It's time + 仮定法過去（went）で「（当然～しているはずなのに）もう～する時間だ」となります。"},
+        {"q":"Without [But for] を使った書き換え：\n'Without air, no one could breathe.' と同じ意味なのはどれか。","c":["If it were not for air","If it had not been for air","If it is not for air","Unless there is air"],"a":0,"e":"現在の仮定なので Without = If it were not for です。"},
+        {"q":"ifの省略（倒置）：\n'If I were you, I would go.' をifを使わずに書くと？","c":["Was I you","Were I you","Am I you","Been I you"],"a":1,"e":"ifを省略すると、Were が文頭に出る倒置が起こります。"},
+        {"q":"ifの省略（倒置）：\n'If I had known the truth, I would have told you.' をifを使わずに書くと？","c":["Had I known","Did I know","I had known","Have I known"],"a":0,"e":"仮定法過去完了のif省略は Had が文頭に出ます。"},
+        {"q":"(  )に入る適切な形を選びなさい。\nI wish I (  ) play the piano like him.","c":["can","could","may","will"],"a":1,"e":"現在の能力に対する仮定なので、助動詞の過去形 could を使います。"},
+        {"q":"「本当は～ないのに（今の事実に反して）～であるかのように」の形はどれか。","c":["as if + 仮定法過去","as if + 仮定法過去完了","as if + 現在形","as if + 進行形"],"a":0,"e":"現在の事実に反する態様は仮定法過去を使います。"},
+        {"q":"'If it were not for his help' と同じ意味の3単語の表現はどれか。","c":["Without his help","But for his help","If no help","Both 0 and 1"],"a":3,"e":"Without と But for はどちらも「～がなければ」という仮定を表せます。"},
+        {"q":"「そろそろ～してもよい時間だ」という少し焦りを伴う表現はどれか。","c":["It's about time + 仮定法過去","It's high time + 仮定法過去","It's time + 仮定法過去","All of above"],"a":3,"e":"about や high を加えることで「そろそろ」「とっくに」というニュアンスを強めます。"},
+        {"q":"「以前にもっと勉強しておけばよかったなぁ(実際はしなかった)」を wish で表現すると？","c":["I wish I studied more.","I wish I had studied more.","I wish I study more.","I wish I will study more."],"a":1,"e":"過去への後悔なので had + 過去分詞にします。"},
+        {"q":"He looks as if he (  ) ill. (実際は病気ではないが、今病気のように見える)","c":["is","were","had been","will be"],"a":1,"e":"現在の状態を仮定しているので were です。"},
+        {"q":"Were it not for your support, I (  ). (もし君の支えがなければ、私は諦めるだろう)","c":["will give up","would give up","would have given up","give up"],"a":1,"e":"帰結節（後半）は「助動詞の過去形＋原形」にします。"},
+        {"q":"(  ) I had followed your advice! (あなたの助言に従ってさえいれば！)","c":["I wish","If only","As if","How if"],"a":1,"e":"過去への強い後悔を感嘆文のように言う形式です。"},
+        {"q":"It is time he (  ) a haircut. (彼はそろそろ髪を切ってもいい頃だ)","c":["gets","got","getting","has got"],"a":1,"e":"It's time の後は仮定法過去（got）を使います。"}
       ]
     }
 
